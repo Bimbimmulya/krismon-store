@@ -1,34 +1,55 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import {delItem} from '../redux/actions/index'
 import { NavLink } from 'react-router-dom'
+import { addQuantity, delItem } from '../redux/action'
 
 
 const Cart = () => {
-    const state = useSelector((state)=> state.addItem)
+    // Di komponen Cart, ganti penggunaan useSelector seperti ini:
+    // const totalPrice = state.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
+    const state = useSelector((state) => state.handleCart);
+
     const dispatch = useDispatch()
 
     const handleClose = (item) => {
         dispatch(delItem(item))
     }
 
+    const handleAdd = (item) => {
+      dispatch(addQuantity(item));
+    };
+
+
+    
+
     const cartItems = (cartItem) => {
         return(
-            <div className="px-4 my-5 bg-light rounded-3" key={cartItem.id}>
-                <div className="container py-4">
-                    <button onClick={()=>handleClose(cartItem)} className="btn-close float-end" aria-label="Close"></button>
-                    <div className="row justify-content-center">
-                        <div className="col-md-4">
-                            <img src={cartItem.img} alt={cartItem.title} height="200px" width="180px" />
-                        </div>
-                        <div className="col-md-4">
-                            <h3>{cartItem.title}</h3>
-                            <p className="lead fw-bold">${cartItem.price}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div className="px-4 my-5 bg-light rounded-3" key={cartItem.id}>
+          <div className="container py-4">
+              <div className="row justify-content-center align-items-center">
+                  <div className="col-md-4">
+                      <img src={cartItem.image} alt={cartItem.title} className="img-fluid" />
+                  </div>
+                  <div className="col-md-4">
+                      <h3>{cartItem.title}</h3>
+                      <p className="lead fw-bold">
+                          Total Price:{" "}
+                          {" "}
+                          {(cartItem.qty * cartItem.price).toLocaleString("id-ID", { style: "currency", currency: "USD" })}
+                      </p>
+                  </div>
+                  <div className="col-md-4">
+                      <div className="d-flex align-items-center">
+                          <button onClick={() => handleAdd(cartItem)} className="btn btn-outline-primary me-2">+</button>
+                          <span>{cartItem.qty}</span>
+                          <button onClick={() => handleClose(cartItem)} className="btn btn-outline-danger ms-2">-</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
         );
     }
 
@@ -48,7 +69,7 @@ const Cart = () => {
         return(
             <div className="container">
                 <div className="row">
-                    <NavLink to="/checkout" className="btn btn-outline-primary mb-5 w-25 mx-auto">Proceed To checkout</NavLink>
+                    <NavLink to="#" className="btn btn-outline-primary mb-5 w-25 mx-auto">Proceed To checkout</NavLink>
                 </div>
             </div>
         );

@@ -11,3 +11,10 @@ export const delItem = (product) => {
         payload : product
     }
 }
+
+export const addQuantity = (product) => {
+    return {
+        type : "ADD_QUANTITY",
+        payload : product
+    }
+}
