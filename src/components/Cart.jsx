@@ -6,10 +6,8 @@ import { addQuantity, delItem } from '../redux/action'
 
 
 const Cart = () => {
-    // Di komponen Cart, ganti penggunaan useSelector seperti ini:
-    // const totalPrice = state.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
-    const state = useSelector((state) => state.handleCart);
 
+    const state = useSelector((state) => state.handleCart);
     const dispatch = useDispatch()
 
     const handleClose = (item) => {
@@ -19,9 +17,6 @@ const Cart = () => {
     const handleAdd = (item) => {
       dispatch(addQuantity(item));
     };
-
-
-    
 
     const cartItems = (cartItem) => {
         return(
