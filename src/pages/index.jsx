@@ -1,5 +1,5 @@
 import React from 'react'
-import Porducts from './Products'
+import Porducts from './product'
 
 const HomePage = () => {
   return (

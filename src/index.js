@@ -1,25 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
-import 'font-awesome/css/font-awesome.min.css'
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
+import 'font-awesome/css/font-awesome.min.css';
+import { Provider } from 'react-redux';
 import store from './redux/store';
+import ProductsPage from './pages/product';
+import DetailProduct from './pages/detail-product';
+import ErrorPage from './pages/404';
+import HomePage from './pages';
+import Cart from './pages/cart';
+import Navbar from './components/Navbar/Navbar';
+import '../src/App.css';
+import '../src/components/Footer/app.scss'
+import Footer from './components/Footer/Footer';
 
-ReactDOM.render(
-  <BrowserRouter>
+const App = () => (
   <Provider store={store}>
-    <App />
+    <Router>
+      <Navbar/>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/products" component={ProductsPage} />
+        <Route exact path="/products/:id" component={DetailProduct} />
+        <Route exact path="/cart" component={Cart} />
+        <Route component={ErrorPage} />
+      </Switch>
+      <Footer/>
+    </Router>
   </Provider>
-  </BrowserRouter>,
-  document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);

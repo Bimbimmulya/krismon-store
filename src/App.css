@@ -2,3 +2,30 @@
 .navbar-nav a {
   font-size: 18px;
 }
+
+.navbar {
+  position: fixed;
+    width: 100%;
+    z-index: 999;
+    top: 0;
+}
+
+/* not found */
+.wrap-404 {
+  display: flex;
+  line-height: 2px;
+  justify-content: center;
+  min-height: 100vh; /* min-h-screen diganti dengan min-height: 100vh */
+  align-items: center;
+  flex-direction: column;
+}
+
+.wrap-404 > h1 {
+  font-size: 80px;
+  color: #cdcdcd;
+}
+
+.sub-404 {
+  font-size: 30px;
+  color: #cdcdcd;
+}

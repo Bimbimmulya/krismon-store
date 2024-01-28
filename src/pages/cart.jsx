@@ -20,7 +20,7 @@ const Cart = () => {
 
     const cartItems = (cartItem) => {
         return(
-          <div className="px-4 my-5 bg-light rounded-3" key={cartItem.id}>
+          <div className="px-4 my-5  py-5 bg-light rounded-3" key={cartItem.id}>
           <div className="container py-4">
               <div className="row justify-content-center align-items-center">
                   <div className="col-md-4">
@@ -79,4 +79,4 @@ const Cart = () => {
     )
 }
 
-export default Cart
+export default Cart;

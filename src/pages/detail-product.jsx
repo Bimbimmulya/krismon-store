@@ -5,7 +5,7 @@ import {useParams} from "react-router";
 import Skeleton from "react-loading-skeleton";
 import { addCart } from '../redux/action';
 
-const Product = () => {
+const DetailProduct = () => {
  
     const {id} = useParams();
     const [product, setProduct] = useState([]);
@@ -77,7 +77,7 @@ const Product = () => {
 
   return (
     <div>
-      <div className="container py-5">
+      <div className="container my-5 py-5">
         <div className="row py-5">
             {loading ? <Loading/> : <ShowProduct/>}
         </div>
@@ -86,4 +86,4 @@ const Product = () => {
   )
 }
 
-export default Product
+export default DetailProduct

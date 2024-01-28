@@ -1,10 +1,10 @@
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
-import HomePage from "./components/Home";
+import HomePage from "./pages";
 import Navbar from "./components/Navbar";
-import Products from "./components/Products";
-import Product from "./components/Product";
-import Cart from "./components/Cart";
+import Products from "./pages/product";
+import Product from "./pages/detail-product";
+import Cart from "./pages/cart";
 
 function App() {
   return (

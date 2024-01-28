@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
 
-const Products = () => {
+const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
@@ -144,4 +144,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsPage;
